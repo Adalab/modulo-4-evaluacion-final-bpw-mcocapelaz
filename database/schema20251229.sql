@@ -79,10 +79,10 @@ DROP TABLE IF EXISTS `libros`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `libros` (
   `id_libros` int NOT NULL AUTO_INCREMENT,
-  `título` varchar(168) NOT NULL,
+  `titulo` varchar(255) DEFAULT NULL,
   `autora` varchar(168) NOT NULL,
   `estado` varchar(45) NOT NULL,
-  `género` varchar(45) DEFAULT NULL,
+  `genero` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_libros`)
 ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -161,4 +161,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-12-29 10:56:31
+-- Dump completed on 2025-12-29 12:07:02

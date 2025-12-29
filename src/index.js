@@ -32,8 +32,8 @@ const getConnection = async () => {
 app.get("/libros", async (req, res) => {
   try {
     const conn = await getConnection();
-    const querySelectLibros = "SELECT * FROM libros ";
-    const [resultados] = await conn.query(querySelectLibros);
+    const querySeleccLibros = "SELECT * FROM libros ";
+    const [resultados] = await conn.query(querySeleccLibros);
 
     await conn.end();
 
@@ -43,3 +43,29 @@ app.get("/libros", async (req, res) => {
     res.status(500).json({ error: "Error al obtener los libros" });
   }
 });
+
+app.post("/libros", async (req, res) => {
+    try {
+      const conn = await getConnection();
+      const { titulo, autora, estado, genero } = req.body;
+      const queryInsertarLibro =
+        "INSERT INTO libros (titulo, autora, estado, genero) VALUES (?, ?, ?, ?)";
+  
+      const [resultados] = await conn.query(queryInsertarLibro, [
+        titulo,
+        autora,
+        estado,
+        genero,
+      ]);
+  
+      await conn.end();
+  
+      res.status(201).json({
+        message: "Libro creado",
+        id: resultados.insertId,
+      });
+    } catch (err) {
+      console.error("Error al insertar el libro:", err);
+      res.status(500).json({ error: "Error al crear el libro" });
+    }
+  });
