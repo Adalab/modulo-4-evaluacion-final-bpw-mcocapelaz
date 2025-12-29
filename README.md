@@ -12,27 +12,25 @@ API REST desarrollada con Node.js, Express y MySQL para la gestión de una bibli
 - **bcrypt** - Encriptación de contraseñas
 - **jsonwebtoken (JWT)** - Autenticación basada en tokens
 - **dotenv** - Gestión de variables de entorno
-- **CORS** - Middleware para habilitar CORS
+- **CORS** - Middleware para habilitar CORS 
 
 ## Requisitos previos
 
 - Node.js (v14 o superior)
 - MySQL (v8 o superior)
-- npm o yarn
+- npm
 
 ## Estructura del proyecto
 
 ├── config/
-│ └── database.js # Configuración de conexión a MySQL
+│ └── database.js 
 ├── routes/
-│ └── users.js # Rutas de autenticación
+│ └── users.js 
 ├── src/
-│ └── index.js # Archivo principal del servidor
-├── .env # Variables de entorno
+│ └── index.js 
+├── .env 
 ├── package.json
 └── README.md
-
-text
 
 ## Seguridad
 
@@ -46,6 +44,7 @@ text
 - [ ] Middleware de verificación de token para proteger rutas
 - [ ] Documentación completa con Swagger
 - [ ] Tests unitarios e integración
+- [ ] Servidor de estáticos
 
   
 ## Autora
