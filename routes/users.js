@@ -8,24 +8,45 @@ router.post("/registro", async (req, res) => {
   const { nombre, email, password } = req.body;
 
   if (!nombre || !email || !password) {
-    return res.status(400).json({ error: "Todos los campos son obligatorios" });
+    return res.status(400).json({
+      success: false,
+      error: "Todos los campos son obligatorios",
+    });
   }
 
   try {
     const passwordHash = await bcrypt.hash(password, 10);
     const conn = await getConnection();
-    const sql = "INSERT INTO usuarias (nombre, email, password) VALUES (?, ?, ?)";
+    const sql =
+      "INSERT INTO usuarias (nombre, email, password) VALUES (?, ?, ?)";
 
-    await conn.query(sql, [nombre, email, passwordHash]);
+    const [resultado] = await conn.query(sql, [nombre, email, passwordHash]);
     await conn.end();
 
-    res.status(201).json({ message: "Usuaria registrada correctamente" });
+    const token = jwt.sign(
+      { userId: resultado.insertId, email: email },
+      process.env.JWT_SECRET,
+      { expiresIn: "24h" }
+    );
+
+    res.status(201).json({
+      success: true,
+      token: token,
+    });
   } catch (error) {
     console.error("Error:", error);
+
     if (error.code === "ER_DUP_ENTRY") {
-      return res.status(400).json({ error: "El email ya está registrado" });
+      return res.status(400).json({
+        success: false,
+        error: "El email ya está registrado",
+      });
     }
-    res.status(500).json({ error: "Error del servidor" });
+
+    res.status(500).json({
+      success: false,
+      error: "Error del servidor",
+    });
   }
 });
 
