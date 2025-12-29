@@ -23,12 +23,12 @@ API REST desarrollada con Node.js, Express y MySQL para la gestión de una bibli
 ## Estructura del proyecto
 
 ├── config/
-│ └── database.js 
+│ └── database.js # Configuración de conexión a MySQL
 ├── routes/
-│ └── users.js 
+│ └── users.js # Rutas de autenticación
 ├── src/
-│ └── index.js 
-├── .env 
+│ └── index.js # Archivo principal del servidor
+├── .env # Variables de entorno
 ├── package.json
 └── README.md
 
