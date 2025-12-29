@@ -101,3 +101,24 @@ app.put("/libros/:id_libros", async (req, res) => {
     res.status(500).json({ error: "Error al actualizar el libro" });
   }
 });
+
+app.delete("/libros/:id_libros", async (req, res) => {
+  try {
+    const conn = await getConnection();
+    const libroId = req.params.id_libros;
+    const queryEliminarLibro = "DELETE FROM libros WHERE id_libros=?;";
+    const [resultados] = await conn.query(queryEliminarLibro, [libroId]);
+    await conn.end();
+
+    if (resultados.affectedRows === 0) {
+      res.status(400).json({ error: "Libro no encontrado" });
+      return;
+    }
+    res.json({
+      message: "Libro eliminado",
+    });
+  } catch (err) {
+    console.error("Error al eliminar el libro:", err);
+    res.status(500).json({ error: "Error al eliminar el libro" });
+  }
+});
