@@ -2,37 +2,21 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const mysql = require("mysql2/promise");
+const getConnection = require("../config/database");
+const usersRouter = require("../routes/users");
+
 const app = express();
 
 app.use(cors());
 app.use(express.json({ limit: "25Mb" }));
+app.use(usersRouter);
 
-const port = 3000;
-app.listen(port, () => {
-  console.log(`Uh! El servidor ya está arrancado: <http://localhost:${port}/>`);
-});
 
-const getConnection = async () => {
-  try {
-    const datosConexion = {
-      host: process.env.MYSQL_HOST,
-      user: process.env.MYSQL_USER,
-      password: process.env.MYSQL_PASSWORD,
-      database: process.env.MYSQL_DATABASE,
-    };
-    const conn = await mysql.createConnection(datosConexion);
-    await conn.connect();
-    return conn;
-  } catch (error) {
-    console.error("Error de conexión a la base de datos:", error);
-    throw error;
-  }
-};
 
 app.get("/libros", async (req, res) => {
   try {
     const conn = await getConnection();
-    const querySeleccLibros = "SELECT * FROM libros ";
+    const querySeleccLibros = "SELECT * FROM libros";
     const [resultados] = await conn.query(querySeleccLibros);
 
     await conn.end();
@@ -111,7 +95,7 @@ app.delete("/libros/:id_libros", async (req, res) => {
     await conn.end();
 
     if (resultados.affectedRows === 0) {
-      res.status(400).json({ error: "Libro no encontrado" });
+      res.status(404).json({ error: "Libro no encontrado" });
       return;
     }
     res.json({
@@ -122,3 +106,10 @@ app.delete("/libros/:id_libros", async (req, res) => {
     res.status(500).json({ error: "Error al eliminar el libro" });
   }
 });
+
+  const port = 3000;
+app.listen(port, () => {
+  console.log(`Servidor arrancado: http://localhost:${port}/`);
+});
+
+

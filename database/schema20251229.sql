@@ -84,7 +84,7 @@ CREATE TABLE `libros` (
   `estado` varchar(45) NOT NULL,
   `genero` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_libros`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,7 +93,7 @@ CREATE TABLE `libros` (
 
 LOCK TABLES `libros` WRITE;
 /*!40000 ALTER TABLE `libros` DISABLE KEYS */;
-INSERT INTO `libros` VALUES (1,'La casa de los espíritus','Isabel Allende','disponible','Ficción'),(2,'Harry Potter y la piedra filosofal','JK Rowling','prestado','Fantasía'),(3,'Memorias de Idhún','Laura Gallego','disponible','Fantasía'),(4,'Orgullo y prejuicio','Jane Austen','prestado','Romance'),(5,'Asesinato en el Orient Express','Agatha Christie','disponible','Misterio'),(6,'La señora Dalloway','Virginia Woolf','disponible','Ficción'),(7,'El cuento de la criada','Margaret Atwood','disponible','Distopía'),(8,'La amiga estupenda','Elena Ferrante','prestado','Ficción'),(9,'Paula','Plaza & Janés','Isabel Allende','Autobiografía'),(10,'Harry Potter y la cámara secreta','JK Rowling','disponible','Fantasía');
+INSERT INTO `libros` VALUES (1,'La casa de los espíritus','Isabel Allende','prestado','Ficción'),(2,'Harry Potter y la piedra filosofal','JK Rowling','prestado','Fantasía'),(3,'Memorias de Idhún','Laura Gallego','disponible','Fantasía'),(4,'Orgullo y prejuicio','Jane Austen','prestado','Romance'),(5,'Asesinato en el Orient Express','Agatha Christie','disponible','Misterio'),(6,'La señora Dalloway','Virginia Woolf','disponible','Ficción'),(7,'El cuento de la criada','Margaret Atwood','disponible','Distopía'),(8,'La amiga estupenda','Elena Ferrante','prestado','Ficción'),(9,'Paula','Plaza & Janés','Isabel Allende','Autobiografía'),(10,'Harry Potter y la cámara secreta','JK Rowling','disponible','Fantasía');
 /*!40000 ALTER TABLE `libros` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -127,29 +127,30 @@ INSERT INTO `prestamos` VALUES (1,1,'2024-10-10','2024-10-24','devuelto'),(2,2,'
 UNLOCK TABLES;
 
 --
--- Table structure for table `usuarios`
+-- Table structure for table `usuarias`
 --
 
-DROP TABLE IF EXISTS `usuarios`;
+DROP TABLE IF EXISTS `usuarias`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `usuarios` (
-  `id_usuarios` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `usuarias` (
+  `id_usuarias` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(168) NOT NULL,
   `email` varchar(168) NOT NULL,
   `fecha_registro` date NOT NULL,
-  PRIMARY KEY (`id_usuarios`)
+  `password` varchar(168) NOT NULL,
+  PRIMARY KEY (`id_usuarias`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `usuarios`
+-- Dumping data for table `usuarias`
 --
 
-LOCK TABLES `usuarios` WRITE;
-/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'Agripina López','agripina.lopez@email.com','2024-01-15'),(2,'Obdulia Ruiz','obdulia.ruiz@email.com','2024-02-20'),(3,'Jacinta González','jacinta.gonzalez@email.com','2024-03-10'),(4,'Fernanda Martínez','fernanda.martinez@email.com','2024-04-05'),(5,'Tomasa Fernández','tomasa.fernandez@email.com','2024-05-12'),(6,'Amparo Sánchez','amparo.sanchez@email.com','2024-06-18'),(7,'Visitación Torres','visitacion.torres@email.com','2024-07-22'),(8,'Alfonsa Morales','alfonsa.morales@email.com','2024-08-30');
-/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
+LOCK TABLES `usuarias` WRITE;
+/*!40000 ALTER TABLE `usuarias` DISABLE KEYS */;
+INSERT INTO `usuarias` VALUES (1,'Agripina López','agripina.lopez@email.com','2024-01-15',''),(2,'Obdulia Ruiz','obdulia.ruiz@email.com','2024-02-20',''),(3,'Jacinta González','jacinta.gonzalez@email.com','2024-03-10',''),(4,'Fernanda Martínez','fernanda.martinez@email.com','2024-04-05',''),(5,'Tomasa Fernández','tomasa.fernandez@email.com','2024-05-12',''),(6,'Amparo Sánchez','amparo.sanchez@email.com','2024-06-18',''),(7,'Visitación Torres','visitacion.torres@email.com','2024-07-22',''),(8,'Alfonsa Morales','alfonsa.morales@email.com','2024-08-30','');
+/*!40000 ALTER TABLE `usuarias` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -161,4 +162,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-12-29 12:07:02
+-- Dump completed on 2025-12-29 12:51:24
