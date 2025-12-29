@@ -5,18 +5,18 @@ const getConnection = require("../config/database");
 const router = express.Router();
 
 router.post("/registro", async (req, res) => {
-  const { nombre, email, fecha_registro, password } = req.body;
+  const { nombre, email, password } = req.body;
 
-  if (!nombre || !email || !fecha_registro || !password) {
+  if (!nombre || !email || !password) {
     return res.status(400).json({ error: "Todos los campos son obligatorios" });
   }
 
   try {
     const passwordHash = await bcrypt.hash(password, 10);
     const conn = await getConnection();
-    const sql = "INSERT INTO usuarias (nombre, email, fecha_registro, password) VALUES (?, ?, ?, ?)";
+    const sql = "INSERT INTO usuarias (nombre, email, password) VALUES (?, ?, ?)";
 
-    await conn.query(sql, [nombre, email, fecha_registro, passwordHash]);
+    await conn.query(sql, [nombre, email, passwordHash]);
     await conn.end();
 
     res.status(201).json({ message: "Usuaria registrada correctamente" });

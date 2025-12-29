@@ -137,10 +137,10 @@ CREATE TABLE `usuarias` (
   `id_usuarias` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(168) NOT NULL,
   `email` varchar(168) NOT NULL,
-  `fecha_registro` date NOT NULL,
+  `fecha_registro` datetime DEFAULT CURRENT_TIMESTAMP,
   `password` varchar(168) NOT NULL,
   PRIMARY KEY (`id_usuarias`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -149,7 +149,7 @@ CREATE TABLE `usuarias` (
 
 LOCK TABLES `usuarias` WRITE;
 /*!40000 ALTER TABLE `usuarias` DISABLE KEYS */;
-INSERT INTO `usuarias` VALUES (1,'Agripina López','agripina.lopez@email.com','2024-01-15',''),(2,'Obdulia Ruiz','obdulia.ruiz@email.com','2024-02-20',''),(3,'Jacinta González','jacinta.gonzalez@email.com','2024-03-10',''),(4,'Fernanda Martínez','fernanda.martinez@email.com','2024-04-05',''),(5,'Tomasa Fernández','tomasa.fernandez@email.com','2024-05-12',''),(6,'Amparo Sánchez','amparo.sanchez@email.com','2024-06-18',''),(7,'Visitación Torres','visitacion.torres@email.com','2024-07-22',''),(8,'Alfonsa Morales','alfonsa.morales@email.com','2024-08-30','');
+INSERT INTO `usuarias` VALUES (1,'Agripina López','agripina.lopez@email.com','2024-01-15 00:00:00',''),(2,'Obdulia Ruiz','obdulia.ruiz@email.com','2024-02-20 00:00:00',''),(3,'Jacinta González','jacinta.gonzalez@email.com','2024-03-10 00:00:00',''),(4,'Fernanda Martínez','fernanda.martinez@email.com','2024-04-05 00:00:00',''),(5,'Tomasa Fernández','tomasa.fernandez@email.com','2024-05-12 00:00:00',''),(6,'Amparo Sánchez','amparo.sanchez@email.com','2024-06-18 00:00:00',''),(7,'Visitación Torres','visitacion.torres@email.com','2024-07-22 00:00:00',''),(8,'Alfonsa Morales','alfonsa.morales@email.com','2024-08-30 00:00:00',''),(9,'María de la O','maria@mail.com','2025-12-29 00:00:00','$2b$10$zHUCWdYhyAdnNToERk1w9.8/IwlW2sSaXJdxU9QRw6hL781qPG2BC'),(10,'María de la O','maria@mail.com','2025-12-29 13:38:37','$2b$10$VIddARUyvjvJM9nd3JtODOQoemQDVYR.PJXXqvQn4OE1.JBKc67wq');
 /*!40000 ALTER TABLE `usuarias` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -162,4 +162,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-12-29 12:51:24
+-- Dump completed on 2025-12-29 13:39:04
