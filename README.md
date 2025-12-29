@@ -28,9 +28,15 @@ API REST desarrollada con Node.js, Express y MySQL para la gestión de una bibli
 │ └── users.js # Rutas de autenticación
 ├── src/
 │ └── index.js # Archivo principal del servidor
-├── .env # Variables de entorno
+├── database/
+│ └── schema.sql # Esquema de la base de datos
+├── .env # Variables de entorno (no incluido en Git)
+├── .gitignore
 ├── package.json
 └── README.md
+
+text
+undefined
 
 ## Seguridad
 
